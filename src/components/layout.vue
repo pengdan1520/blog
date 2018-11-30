@@ -2,42 +2,12 @@
   <div>
     <div class="header-home" style="height: 70px;">
       <nav class="navbar" role="navigation">
-        <div class="col-xs-6 col-md-3 col-md-offset-1">
-          <router-link tag="li" to="/">
-            <a>Home</a>
-          </router-link>
-        </div>
         <div class="col-xs-12 col-sm-6 col-md-8" >
-          <div class="col-xs-10 text-right menu-1 text-center">
+          <div class="col-xs-10 text-right menu-1">
             <ul class="homeUl">
-              <li class="active">
-                <router-link tag="li" to="/">
-                  <a>Home</a>
-                </router-link>
-              </li>
-              <li class="has-dropdown">
-                <router-link tag="li" to="/blog">
-                  <a>Blog</a>
-                </router-link>
-              </li>
-              <li>
-                <router-link tag="li" to="/event">
-                  <a>Event</a>
-                </router-link>
-              </li>
-              <li>
-                <router-link tag="li" to="/travel">
-                  <a>Travel</a>
-                </router-link>
-              </li>
-              <li>
-                <router-link tag="li" to="/about">
-                  <a>About me</a>
-                </router-link>
-              </li>
-              <li>
-                <router-link tag="li" to="/contact">
-                  <a>Contact</a>
+              <li class="active" v-for="item in listNav">
+                <router-link tag="li" :to="item.url">
+                  <a class="homeNavFont">{{item.name}}</a>
                 </router-link>
               </li>
             </ul>
@@ -63,7 +33,26 @@ export default {
   name: 'layout',
   data () {
     return {
-      msg: ''
+      msg: '',
+      listNav:[{
+        name: '首页',
+        url: '/'
+      },{
+        name: '博客',
+        url: '/blog'
+      },{
+        name: '留言',
+        url: '/event'
+      },{
+        name: '旅游记录',
+        url: '/travel'
+      },{
+        name: '我的简介',
+        url: '/about'
+      },{
+        name: '推荐',
+        url: '/contact'
+      }]
     }
   }
 }
@@ -72,6 +61,9 @@ export default {
 .homeUl{
   display: inline-block;
   line-height: 57px;
+}
+.navBar{
+  text-align: right;
 }
 .homeUl li{
   float: left;
@@ -83,6 +75,10 @@ input,button,a {
 }
 .fontStyle{
   font-family: SansSerif;
+}
+.homeNavFont{
+  font-size: 12px;
+  color: #666666;
 }
 .clear {
   clear: both;
